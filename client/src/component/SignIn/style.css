@@ -1,0 +1,15 @@
+.height {
+    height: 50em
+}
+
+.centerPage {
+    height: 50rem;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.centerDiv {
+    display: flex;
+    justify-content: space-between;
+}
