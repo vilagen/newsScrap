@@ -1,12 +1,14 @@
 import React, { Component } from "react";
-import { Col, Form, Button, Card } from "react-bootstrap"
+import { Form, Button, Card } from "react-bootstrap"
 import './style.css'
 
 class SignIn extends Component {
 
 	state = {
 		username: "",
+		email: "",
 		password: "",
+		password2: ""
 	}
 
 		render() {
@@ -22,11 +24,20 @@ class SignIn extends Component {
 								<Form>
 
 								<Form.Group controlId="formBasicEmail">
-										<Form.Label className="d-flex justify-content-start">Email address</Form.Label>
+										<Form.Label className="d-flex justify-content-start">Username</Form.Label>
 										<Form.Control 
 										type="text" 
 										placeholder="Username"
 										onChange={ (event) => {this.setState({name: event.target.value}); console.log(this.state.username)} }
+										/>
+								</Form.Group>
+
+								<Form.Group controlId="formBasicEmail">
+										<Form.Label className="d-flex justify-content-start">Email address</Form.Label>
+										<Form.Control 
+										type="email" 
+										placeholder="Email"
+										onChange={ (event) => {this.setState({name: event.target.value}); console.log(this.state.email)} }
 										/>
 								</Form.Group>
 
@@ -35,17 +46,26 @@ class SignIn extends Component {
 										<Form.Control 
 										type="password" 
 										placeholder="Password" 
-										onChange={ (event) => {this.setState({name: event.target.value}); console.log(this.state.username)} }
+										onChange={ (event) => {this.setState({name: event.target.value}); console.log(this.state.password)} }
+										/>
+								</Form.Group>
+
+								<Form.Group controlId="formBasicPassword">
+										<Form.Label className="d-flex justify-content-start">Password</Form.Label>
+										<Form.Control 
+										type="password" 
+										placeholder="Password" 
+										onChange={ (event) => {this.setState({name: event.target.value}); console.log(this.state.password2)} }
 										/>
 								</Form.Group>
 
 								<div className="centerDiv">
 								<Button variant="primary" type="submit">
-										Login
+										Submit
 								</Button>
 
 								<Button variant="primary" type="submit">
-										Sign Up
+										Return
 								</Button>
 								</div>
 
@@ -62,4 +82,4 @@ class SignIn extends Component {
     }
 }
 
-export default SignIn
+export default SignUp
