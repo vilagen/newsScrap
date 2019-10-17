@@ -9,10 +9,10 @@ module.exports = function(sequelize, DataTypes) {
 			unique: true,
 			validate: {
 				min: 6,
-				msg: "Username must at least be 6 characters.",
-				notNull: {
-					msg: "Please enter a username"
-				}
+				// msg: "Username must at least be 6 characters.",
+				// notNull: {
+				// 	msg: "Please enter a username"
+				// }
 			}
 		},
 
@@ -21,10 +21,10 @@ module.exports = function(sequelize, DataTypes) {
 			allowNull: false,
 			validate: {
 				isEmail: true,
-				msg: "This field must be a valid email.",
-				notNull: {
-					msg: "Email is required."
-				}
+				// msg: "This field must be a valid email.",
+				// notNull: {
+				// 	msg: "Email is required."
+				// }
 			}
 		},
 
@@ -33,10 +33,10 @@ module.exports = function(sequelize, DataTypes) {
 			allowNull: false,
 			validate: {
 				min: 8,
-				msg: "Password requires at least 8 characters.",
-				notNull: {
-					msg: "A password is required."
-				}
+				// msg: "Password requires at least 8 characters.",
+				// notNull: {
+				// 	msg: "A password is required."
+				// }
 			}
 		}
 	});

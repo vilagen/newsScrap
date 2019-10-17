@@ -1,4 +1,4 @@
-const User = require('../models/User')
+const db = require('../models')
 const jwt = require('jwt-simple');
 const config = require('../config');
 
@@ -14,45 +14,71 @@ exports.signin = function(req, res, next) {
 }
 
 exports.signup = function(req, res, next) {
-	const username = req.body.username;
-  const password = req.body.password
-  const email = req.body.email
+  const username = req.body.username;
+  const email = req.body.email;
+  const password = req.body.password;
 
 	if (!username || !password || !email) {
 		return res.status(422).send({ error: "Username, password, and email are all required."})
   }
   
-  // see if username exist
+//   // see if username exist
   
-  User.findOne({where: {username: username} }),function(err, existingUser) {
-		if (err) { return next(err); }
+//   db.User.findOne({where: {username: username} }),function(err, existingUser) {
+// 		if (err) { return next(err); }
 
-		// if a username does exist, return an error
+// 		// if a username does exist, return an error
 
-		if (existingUser)
-				return res.status(422).send({ error: "Username is taken" });
+// 		if (existingUser)
+// 				return res.status(422).send({ error: "Username is taken" });
 
-		// if a username doesn't exist, create and save user record.
-		const user = new User({
-      username: username,
-      password: password,
-			email: email			
+// 		// if a username doesn't exist, create and save user record.
+
+		const user = new db.User({
+			username: username,
+			email: email,
+			password: password
 		});
 
-		user.save(function(err) {
-				if(err) { return next(err); }
+		user.save().then(function(err) {
+			if(err) { return next(err); }
 
-					// Respond to request indicating user was created.
-					res.json({ token: tokenForUser(user) });
+				// Respond to request indicating user was created.
+				res.json({ token: tokenForUser(user) });
 		});
+
+		// db.User.create({
+		// 	username: username,
+		// 	password: password,
+		//   	email: email	
+		// })
+		// .then(function(err, user) {
+		// 	if(err) { return next(err); }
+		// 		// Respond to request indicating user was created.
+		// 		res.json({ token: tokenForUser(User) });
+		// });
   };
-};
+// };
 
-
-
-
-
-
+// app.post("/api/signup", upload.single('avatar'), function(req, res) {
+//     console.log(req.file);
+//     console.log(req.body)
+//     db.User.create({
+//       email: req.body.email,
+//       password: req.body.password,
+//       avatarPath: "uploads/" + req.file.filename
+//     }).then(function(user) {
+//       //console.log(arguments);
+//       passport.authenticate('local')(req, res, function () {
+//         res.end("/members");
+//         }
+//       )
+//     }).catch(function(err) {
+//       console.log(err);
+//       res.json(err);
+//       // res.status(422).json(err.errors[0].message);
+//     });
+//   });
 
 
 
