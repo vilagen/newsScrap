@@ -14,25 +14,25 @@ exports.signin = function(req, res, next) {
 }
 
 exports.signup = function(req, res, next) {
-  const username = req.body.username;
-  const email = req.body.email;
-  const password = req.body.password;
+  const { username, email, password } = req.body
 
 	if (!username || !password || !email) {
 		return res.status(422).send({ error: "Username, password, and email are all required."})
   }
   
-//   // see if username exist
+  // see if username exist
   
-//   db.User.findOne({where: {username: username} }),function(err, existingUser) {
-// 		if (err) { return next(err); }
+  db.User.findOne({where: {username: username} }).then( existingUser => {
 
-// 		// if a username does exist, return an error
+		if (existingUser) 
+		return res.status(422).send({ error: "Username is taken" })
+		})
 
-// 		if (existingUser)
-// 				return res.status(422).send({ error: "Username is taken" });
+		.catch( error => {
+			if(error) {return `Error signing up username. \n ${error}` }
+		})		
 
-// 		// if a username doesn't exist, create and save user record.
+		// create and save user record.
 
 		const user = new db.User({
 			username: username,
@@ -40,25 +40,14 @@ exports.signup = function(req, res, next) {
 			password: password
 		});
 
-		user.save().then(function(err) {
-			if(err) { return next(err); }
-
-				// Respond to request indicating user was created.
-				res.json({ token: tokenForUser(user) });
-		});
-
-		// db.User.create({
-		// 	username: username,
-		// 	password: password,
-		//   	email: email	
-		// })
-		// .then(function(err, user) {
-		// 	if(err) { return next(err); }
-		// 		// Respond to request indicating user was created.
-		// 		res.json({ token: tokenForUser(User) });
-		// });
-  };
-// };
+		user.save().then( () => {
+			res.json({ token: tokenForUser(user) })
+			})
+			.catch( error => {
+				if(error) {return `Error signing up username. \n ${error}` }
+			})
+		};
+	
 
 // app.post("/api/signup", upload.single('avatar'), function(req, res) {
 //     console.log(req.file);
@@ -79,58 +68,3 @@ exports.signup = function(req, res, next) {
 //       // res.status(422).json(err.errors[0].message);
 //     });
 //   });
-
-
-
-
-
-
-
-
-
-
-// var passport = require("passport");
-// var LocalStrategy = require("passport-local").Strategy;
-// var db = require("../models");
-
-// passport.use(new LocalStrategy(
-//   {
-//     usernameField: "username"
-//   },
-//   function(username, password, done) {
-//     db.User.findOne({
-//       where: {
-//         username: username
-//       },
-//       // include: ['Albums']
-//     }).then(function(dbUser) {
-//       console.log(dbUser)
-//       // dbUser["Albums"].forEach(x => console.log(x.name));
-//       if (!dbUser) {
-//         return done(null, false, {
-//           message: "No username found."
-//         });
-//       }
-//       else if (!dbUser.validPassword(password)) {
-//         return done(null, false, {
-//           message: "Incorrect password."
-//         });
-//       }
-//       // If none of the above, return the user
-//       return done(null, dbUser);
-//     });
-//   }
-// ));
-
-// passport.serializeUser(function(user, cb) {
-//   cb(null, user);
-// });
-// //
-// passport.deserializeUser(function(obj, cb) {
-//   cb(null, obj);
-// });
-
-// module.exports = passport;
-
-
-
