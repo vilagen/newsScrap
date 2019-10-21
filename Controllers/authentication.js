@@ -40,11 +40,21 @@ exports.signup = function(req, res, next) {
 			password: password
 		});
 
-		user.save().then(function(err) {
+		// user.save(function(err) {
+		// 	if(err) { return next(err); }
+
+		// 		// Respond to request indicating user was created.
+		// 		res.json({ token: tokenForUser(user) });
+		// });
+
+		user.save(function(err) {
 			if(err) { return next(err); }
 
 				// Respond to request indicating user was created.
 				res.json({ token: tokenForUser(user) });
+				
+		}).then(function(err) {
+			if(err) { return next(err); }
 		});
 
 		// db.User.create({

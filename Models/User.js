@@ -9,10 +9,9 @@ module.exports = function(sequelize, DataTypes) {
 			unique: true,
 			validate: {
 				min: 6,
-				// msg: "Username must at least be 6 characters.",
-				// notNull: {
-				// 	msg: "Please enter a username"
-				// }
+				notNull: {
+					msg: "Please enter a username"
+				}
 			}
 		},
 
