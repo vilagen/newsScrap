@@ -41,11 +41,11 @@ class SignIn extends Component {
 
 								<div className="spaceBetweenDiv">
 								<Button variant="primary" type="submit">
-										Login
+										Sign Up
 								</Button>
 
 								<Button variant="primary" type="submit">
-										Sign Up
+										Log In
 								</Button>
 								</div>
 
