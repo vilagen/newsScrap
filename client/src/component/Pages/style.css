@@ -29,6 +29,14 @@
     align-items: center;
 }
 
+.vertAlign2 {
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
 .padding-0{
     padding-right:0;
     padding-left:0;
@@ -53,4 +61,5 @@
     background-image: url("./assets/images/whitehouse.jpg");
     /* content: url("./assets/images/whitehouse.jpg") */
     height: 100%;
+    width: 100%;
 }

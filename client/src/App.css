@@ -1,8 +1,10 @@
 html {
   position: relative;
   min-height: 100%;
+  overflow-x: hidden;
 }
 
 body {
-  background-size: 100%
+  background-size: 100%;
+  overflow-x: hidden; 
 }

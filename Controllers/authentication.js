@@ -40,37 +40,6 @@ exports.signup = function(req, res, next) {
 			password: password
 		});
 
-<<<<<<< HEAD
-		// user.save(function(err) {
-		// 	if(err) { return next(err); }
-
-		// 		// Respond to request indicating user was created.
-		// 		res.json({ token: tokenForUser(user) });
-		// });
-
-		user.save(function(err) {
-			if(err) { return next(err); }
-
-				// Respond to request indicating user was created.
-				res.json({ token: tokenForUser(user) });
-				
-		}).then(function(err) {
-			if(err) { return next(err); }
-		});
-
-		// db.User.create({
-		// 	username: username,
-		// 	password: password,
-		//   	email: email	
-		// })
-		// .then(function(err, user) {
-		// 	if(err) { return next(err); }
-		// 		// Respond to request indicating user was created.
-		// 		res.json({ token: tokenForUser(User) });
-		// });
-  };
-// };
-=======
 		user.save().then( () => {
 			res.json({ token: tokenForUser(user) })
 			})
@@ -79,7 +48,6 @@ exports.signup = function(req, res, next) {
 			})
 		};
 	
->>>>>>> 18eacb0eadd5ee852e968e2de2f483dcd04ec244
 
 // app.post("/api/signup", upload.single('avatar'), function(req, res) {
 //     console.log(req.file);
