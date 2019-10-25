@@ -63,3 +63,19 @@
     height: 100%;
     width: 100%;
 }
+
+.buttonGray {
+    background-color: lightgray;
+    border: lightgray;
+    background-image: url("./assets/images/npr.png");
+    background-repeat: no-repeat;
+    padding: 25px 50px
+  }
+  
+  .buttonGray:hover {background-color: #e7e7e7;}
+
+  .mybutton {
+    background-image:url("./assets/images/npr.png");
+    background-repeat:no-repeat;
+}
+

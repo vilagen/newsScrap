@@ -37,11 +37,8 @@ class Home extends Component {
 
 					<Col className="padding-0 vertAlign2" id="politics" xs={4}>
 
-						<div>
-
-							<p>This is a test.</p>
-
-						</div>
+						<button className="buttonGray">
+						</button>
 
 					</Col>
 
