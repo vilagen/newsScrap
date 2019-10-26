@@ -1,6 +1,7 @@
 import React, { Component } from "react";
-import { Row, Col } from "react-bootstrap";
+import { Row, Col, Container } from "react-bootstrap";
 import  Column from "../component/Column";
+import Header from "../component/Header";
 import './style.css'
 
 class Home extends Component {
@@ -13,13 +14,13 @@ class Home extends Component {
 		return (
 			<div>
 
+				<Header></Header>
+
 				<Row>
 
 					<Col xs={12}>
 
 						<div id="jumboBox">
-	
-							<h5 className="topPage" style={{ color: 'white'}}>Login</h5>
 
 							<div className="vertAlign">
 								<p id="scrap"> SCRAP </p>
@@ -33,29 +34,39 @@ class Home extends Component {
 				</Row>
 
 
+				<Container>
 
-				<Row style= {{height: "100vh"}}>
+					<Row style= {{height: "100vh", marginTop: "5vh" }}>
 
-					<Column></Column>
+		
 
-					<Col className="padding-0" xs={4}>
+						<Col xs={4}>
 
-						<div id="politics">
+							<Column></Column>
 
-						<p>This is a test.</p>
+						</Col>
 
-						</div>
+						<Col className="" xs={4}>
 
-					</Col>
+							<div id="politics">
 
-					<Col className="padding-0" xs={4}>
+							<p>This is a test.</p>
 
-						<div id="politics"></div>
+							</div>
 
-					</Col>
-					
-				</Row>
-			
+						</Col>
+
+						<Col className="" xs={4}>
+
+							<div id="politics"></div>
+
+						</Col>
+
+						
+					</Row>
+
+				</Container>
+
 			</div>
 		)
 	}
