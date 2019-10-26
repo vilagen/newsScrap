@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 import { Row, Col } from "react-bootstrap";
-import { Column } from "../Column";
+import  Column from "../component/Column";
 import './style.css'
 
 class Home extends Component {
@@ -36,12 +36,7 @@ class Home extends Component {
 
 				<Row style= {{height: "100vh"}}>
 
-					<Column
-					id="politics">
-
-						<button className="buttonGray"></button>
-					
-					</Column>
+					<Column></Column>
 
 					<Col className="padding-0" xs={4}>
 
