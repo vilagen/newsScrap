@@ -1,6 +1,6 @@
 import React from 'react';
 import Home from './Pages/Home'
-import SignIn from './component/Pages/Signin'
+import SignIn from './Pages/Signin'
 import './App.css';
 
 function App() {

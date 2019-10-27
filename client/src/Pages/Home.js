@@ -2,13 +2,21 @@ import React, { Component } from "react";
 import { Row, Col, Container } from "react-bootstrap";
 import  Column from "../component/Column";
 import Header from "../component/Header";
+import API from "../APIs/API"
 import './style.css'
 
 class Home extends Component {
 
 	state = {
-
+		nprResults: []
 	}
+
+	nprSearch = () => {
+        API.searchNPR().then( ({data: {items}}) =>
+		this.setState({ nprResults: items}) 
+		)
+		console.log(this.state.nprResults)
+    }
 
 	render() {
 		return (
@@ -41,8 +49,11 @@ class Home extends Component {
 		
 
 						<Col xs={4}>
-
+							
+							<button
+							onClick={this.nprSearch}>
 							<Column></Column>
+							</button>
 
 						</Col>
 

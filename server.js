@@ -2,11 +2,12 @@ const express = require("express");
 const http = require('http');
 const bodyParser = require('body-parser');
 const morgan = require('morgan');
-const router = require("./Routes/routes");
+const routes = require("./Routes");
 const path = require("path");
 const PORT = process.env.PORT || 3090;
 const app = express();
 const db = require("./models")
+const cors = require("cors")
 
 // Serve up static assets (usually on heroku)
 if (process.env.NODE_ENV === "production") {
@@ -14,9 +15,10 @@ if (process.env.NODE_ENV === "production") {
 }
 
 // App Setup
+app.use(cors())
 app.use(morgan('combined')); 
 app.use(bodyParser.json({ type: `*/*` }))
-router(app);
+app.use(routes)
 
 // Send every request to the React app
 // Define any API routes before this runs

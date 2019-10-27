@@ -2,14 +2,16 @@ import React from "react";
 import { Col } from "react-bootstrap";
 import "./style.css"
 
+
 function Column() {
-    
-    
 
     return (
+
         <div className="vertAlign2" id="politics">
 
-            <button className="buttonGray"></button>
+            <button 
+            className="buttonGray">
+            </button>
 
         </div>
     )
