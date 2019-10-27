@@ -5,6 +5,7 @@ const Authentication = require('../Controllers/authentication')
 const passportService = require('../Services/Passport')
 const passport = require('passport')
 const axios = require("axios")
+const cheerio = require("cheerio")
 
 const requireAuth = passport.authenticate('jwt', { session: false });
 // session is 'false' because passport tries to make a cookie based session,
@@ -27,29 +28,29 @@ router.post('/signin', requireSignin, Authentication.signin);
 
 router.post('/signup', Authentication.signup);
 
-// router.get("/scrape", (req, res) => {
-//     axios.get("http://www.nytimes.com/")
-//         .then(function(response) {
-//         let $ = cheerio.load(response.data);
+router.get("/scrape", (req, res) => {
+    axios.get("http://www.nytimes.com/")
+        .then(function(response) {
+        let $ = cheerio.load(response.data);
   
-//         // Grabbing articles 
-//         $("article").each(function(i, element) {
+        // Grabbing articles 
+        $("article").each(function(i, element) {
   
-//             // starting with empty results
-//             let results = {}
+            // starting with empty results
+            let results = {}
   
-//             results.title = $(this).find("h2").text()
-//             results.link = $(this).find("a").attr("href")
-//             results.summary = ($(this).find("li").text() || $(this).find("p").text())
-//             results.image = $(this).find("img").attr("src")
+            results.title = $(this).find("h2").text()
+            results.link = $(this).find("a").attr("href")
+            results.summary = ($(this).find("li").text() || $(this).find("p").text())
+            results.image = $(this).find("img").attr("src")
 
-//            res.send(results)
+            res.json(results)
 
-//             })
-//             .catch((err) => {
-//                 if (err) throw "Error creating articles. " + err;
-//             })
-//         });
-//     });
+            })
+            .catch((err) => {
+                if (err) throw "Error creating articles. " + err;
+            })
+        });
+    });
 
 module.exports = router;

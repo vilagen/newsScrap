@@ -18,6 +18,7 @@ if (process.env.NODE_ENV === "production") {
 app.use(cors())
 app.use(morgan('combined')); 
 app.use(bodyParser.json({ type: `*/*` }))
+app.use(express.urlencoded({ extended: true }));
 app.use(routes)
 
 // Send every request to the React app

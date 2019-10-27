@@ -8,14 +8,15 @@ import './style.css'
 class Home extends Component {
 
 	state = {
-		nprResults: []
+		nytResults: []
 	}
 
 	nprSearch = () => {
-        API.searchNPR().then( ({data: {items}}) =>
-		this.setState({ nprResults: items}) 
+		API.searchNPR()
+		.then( (res) =>
+		this.setState({ nytResults: res})
 		)
-		console.log(this.state.nprResults)
+		console.log(this.state.nytResults)
     }
 
 	render() {
