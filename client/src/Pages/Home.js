@@ -43,41 +43,19 @@ class Home extends Component {
 				</Row>
 
 
-				<Container>
 
-					<Row style= {{height: "100vh", marginTop: "5vh" }}>
 
-		
+				<Row style= {{height: "80vh"}}>
 
-						<Col xs={4}>
-							
-							<button
-							onClick={this.nprSearch}>
-							<Column></Column>
-							</button>
+					<Col xs={1}>
+											
+						<Column></Column>
+				
+					</Col>
+					
+				</Row>
 
-						</Col>
 
-						<Col className="" xs={4}>
-
-							<div id="politics">
-
-							<p>This is a test.</p>
-
-							</div>
-
-						</Col>
-
-						<Col className="" xs={4}>
-
-							<div id="politics"></div>
-
-						</Col>
-
-						
-					</Row>
-
-				</Container>
 
 			</div>
 		)

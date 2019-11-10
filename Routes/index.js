@@ -29,28 +29,11 @@ router.post('/signin', requireSignin, Authentication.signin);
 router.post('/signup', Authentication.signup);
 
 router.get("/scrape", (req, res) => {
-    axios.get("http://www.nytimes.com/")
+    axios.get("https://newsapi.org/v2/top-headlines?country=us&apiKey=c483ecd385a74ddbabd645b0c64c548b")
         .then(function(response) {
-        let $ = cheerio.load(response.data);
-  
-        // Grabbing articles 
-        $("article").each(function(i, element) {
-  
-            // starting with empty results
-            let results = {}
-  
-            results.title = $(this).find("h2").text()
-            results.link = $(this).find("a").attr("href")
-            results.summary = ($(this).find("li").text() || $(this).find("p").text())
-            results.image = $(this).find("img").attr("src")
-
-            res.json(results)
-
-            })
-            .catch((err) => {
-                if (err) throw "Error creating articles. " + err;
-            })
-        });
-    });
+            console.log(response.data)
+            res.json(response.data)
+        })
+})
 
 module.exports = router;
