@@ -8,16 +8,18 @@ import './style.css'
 class Home extends Component {
 
 	state = {
-		nytResults: []
+		news: []
 	}
 
-	nprSearch = () => {
-		API.searchNPR()
-		.then( (res) =>
-		this.setState({ nytResults: res})
-		)
-		console.log(this.state.nytResults)
-    }
+	newsSearch = () => {
+		API.newsSearch()
+		.then( res => this.setState({news: res.data}))
+			.catch(err => console.log(err))
+	};
+	
+	consoleThis = () => {
+		console.log(this.state.news);
+	}
 
 	render() {
 		return (
@@ -49,7 +51,10 @@ class Home extends Component {
 
 					<Col xs={1}>
 											
-						<Column></Column>
+						<Column
+						onClick={this.newsSearch}
+						onClick2={this.consoleThis}>
+						</Column>
 				
 					</Col>
 					

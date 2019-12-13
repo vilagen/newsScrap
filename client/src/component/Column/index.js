@@ -2,14 +2,20 @@ import React from "react";
 import "./style.css"
 
 
-function Column() {
+function Column({onClick, onClick2}) {
 
     return (
 
         <div className="vertAlign2" id="politics">
 
             <button 
-            className="buttonGray">
+            className="buttonGray"
+            onClick={onClick}>
+            </button>
+
+            <button 
+            className="buttonGray"
+            onClick={onClick2}>
             </button>
 
         </div>

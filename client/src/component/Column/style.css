@@ -14,7 +14,7 @@
 .buttonGray {
     background-color: lightgray;
     border: lightgray;
-    background-image: url("");
+    /* background-image: url(""); */
     background-repeat: no-repeat;
     padding: 25px 50px
   }
