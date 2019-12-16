@@ -1,7 +1,7 @@
 const router = require("express").Router();
-const nprRoutes = require("./npr");
+const currentNewsRoutes = require("./currentnews");
 
 // npr routes
-router.use("/npr", nprRoutes);
+router.use("/currentnews", currentNewsRoutes);
 
 module.exports = router;
