@@ -1,7 +1,24 @@
-const router = require("express").Router();
-const nprControllers = require("../../Controllers/currentnews");
+module.exports = (app) => {
+// Matches with "api/currentnews"
+app.get('/search-location-weather', (req, res) => {
+  // build api URL with user zip
+    const baseUrl = 'https://newsapi.org/v2/top-headlines?country=us&apiKey=';
+    const apiId = 'c483ecd385a74ddbabd645b0c64c548b';
 
-// Mathes with "api/npr"
-router.route("/").get(currentnews.current);
+    const userLocation = ( url1, url2) => {
+      let newUrl = url1 + url2;
+      return newUrl;
+    };
 
-module.exports = router
+    const apiUrl = userLocation(baseUrl, apiId);
+
+    fetch(apiUrl)
+    .then(res => res.json())
+    .then(data => {
+      res.send({data});
+    })
+    .catch(err => {
+      res.redirect('/error');
+    });
+  });
+};

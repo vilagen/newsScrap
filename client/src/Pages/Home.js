@@ -2,26 +2,43 @@ import React, { Component } from "react";
 import { Row, Col, Container } from "react-bootstrap";
 import  Column from "../component/Column";
 import Header from "../component/Header";
+import { NewsList, NewsListItem } from "../component/NewsList";
 import API from "../APIs/API"
 import './style.css'
 
 class Home extends Component {
 
 	state = {
-		news: []
-	}
+		currentNews: []
+	};
 
 	newsSearch = () => {
 		API.newsSearch()
-		.then( res => this.setState({news: res.data}))
-			.catch(err => console.log(err))
+		.then( res => this.setState({currentNews: res.data.articles}))
+			.catch(err => console.log(err));
 	};
+
+	// newsSearch = () => {
+	// 	fetch('api/currentnews')
+	// 	.then( res=> this.setState({ news: res }))
+	// };
 	
 	consoleThis = () => {
-		console.log(this.state.news);
+		console.log(this.state.currentNews);
 	}
 
 	render() {
+
+		let newsButtonStyle = {
+			height: "10vh",
+			display: "flex",
+			flexDirection: "row",
+			justifyContent: "center",
+			alignItems: "center",
+			textAlign: "center",
+			backgroundColor: "yellow",
+    };
+
 		return (
 			<div>
 
@@ -44,21 +61,43 @@ class Home extends Component {
 		
 				</Row>
 
+				<Row style={newsButtonStyle}>
 
+					<Col xs={12}>
 
-
-				<Row style= {{height: "80vh"}}>
-
-					<Col xs={1}>
-											
-						<Column
-						onClick={this.newsSearch}
-						onClick2={this.consoleThis}>
-						</Column>
+						<button style={{color:"dodgerblue"}}				
+						onClick={this.newsSearch}>
+							Current News
+						</button>
+						
+					</Col>
 				
+				</Row>
+
+					<Row>
+
+					<Col xs={12}>
+
+						<NewsList>
+							{this.state.currentNews.map( (news, i) => (
+								<NewsListItem
+									key={i}
+									source={news.source.id}
+									author={news.author}
+									title={news.title}
+									image={news.urlToImage}
+									description={news.description}
+									url={news.url}
+									published={news.published}
+									/>
+								)
+							)};
+						</NewsList>
+
 					</Col>
 					
 				</Row>
+
 
 
 
