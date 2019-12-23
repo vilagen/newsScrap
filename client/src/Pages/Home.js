@@ -1,6 +1,5 @@
 import React, { Component } from "react";
-import { Row, Col, Container } from "react-bootstrap";
-import  Column from "../component/Column";
+import { Row, Col } from "react-bootstrap";
 import Header from "../component/Header";
 import { NewsList, NewsListItem } from "../component/NewsList";
 import API from "../APIs/API"
@@ -14,15 +13,10 @@ class Home extends Component {
 
 	newsSearch = () => {
 		API.newsSearch()
-		.then( res => this.setState({currentNews: res.data.articles}))
+		.then( res => this.setState({currentNews: res.data}))
 			.catch(err => console.log(err));
 	};
 
-	// newsSearch = () => {
-	// 	fetch('api/currentnews')
-	// 	.then( res=> this.setState({ news: res }))
-	// };
-	
 	consoleThis = () => {
 		console.log(this.state.currentNews);
 	}

@@ -1,5 +1,4 @@
 const express = require("express");
-const http = require('http');
 const bodyParser = require('body-parser');
 const morgan = require('morgan');
 const routes = require("./Routes");
@@ -15,8 +14,9 @@ if (process.env.NODE_ENV === "production") {
 }
 
 // App Setup
-app.use(morgan('combined')); 
-app.use(bodyParser.json({ type: `*/*` }))
+// app.use(morgan('combined')); 
+// app.use(bodyParser.json({ type: `*/*` }))
+app.use(express.json())
 app.use(express.urlencoded({ extended: true }));
 app.use(routes);
 
