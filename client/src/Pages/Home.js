@@ -23,7 +23,7 @@ class Home extends Component {
 
 	render() {
 
-		let newsButtonStyle = {
+		const newsButtonStyle = {
 			height: "10vh",
 			display: "flex",
 			flexDirection: "row",
@@ -60,7 +60,7 @@ class Home extends Component {
 					<Col xs={12}>
 
 						<button style={{color:"dodgerblue"}}				
-						onClick={this.newsSearch}>
+							onClick={this.newsSearch}>
 							Current News
 						</button>
 						
