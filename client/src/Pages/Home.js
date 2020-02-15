@@ -15,6 +15,7 @@ class Home extends Component {
 		API.newsSearch()
 		.then( res => this.setState({currentNews: res.data}))
 			.catch(err => console.log(err));
+		console.log(this.state.currentNews);
 	};
 
 	consoleThis = () => {
@@ -22,6 +23,26 @@ class Home extends Component {
 	}
 
 	render() {
+
+		// const functionComp = () => {
+		// 	useEffect( () => {
+		// 		const fetchSomeData = async () => {
+		// 			state = {
+		// 				currentNews: []
+		// 			};
+		// 		}
+	
+		// 		( () => {
+		// 			const someResponse = await someMethod()
+		// 			this.setState({
+		// 				data: someResponse.data
+		// 			})
+		// 		})
+	
+		// 		fetchSomeData()
+	
+		// 	})
+		// }
 
 		const newsButtonStyle = {
 			height: "10vh",

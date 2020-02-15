@@ -2,7 +2,7 @@ import React, { Component } from "react";
 import { Form, Button, Card } from "react-bootstrap"
 import './style.css'
 
-class SignIn extends Component {
+class SignUp extends Component {
 
 	state = {
 		username: "",
@@ -59,10 +59,12 @@ class SignIn extends Component {
 										/>
 								</Form.Group>
 
-								<div className="centerDiv">
+								<div>
 								<Button variant="primary" type="submit">
 										Submit
 								</Button>
+								
+								<span class="mr-2"></span>
 
 								<Button variant="primary" type="submit">
 										Return

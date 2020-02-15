@@ -7,4 +7,6 @@ html {
 body {
   background-size: 100%;
   overflow-x: hidden; 
+  background: linear-gradient(to left, yellow 0%, darkgray 50%)
 }
+
